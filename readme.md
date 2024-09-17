@@ -3,6 +3,30 @@ Facebook, GitHub, and other social media platforms, you can use the
 passport.js middleware. Here's a basic project setup with Passport and 
 OAuth for multiple platforms:
 
+```mermaid
+graph TD
+    A[User] -->|Request Access| B[OAuth Provider]
+    B -->|Redirect to Authorization Server| C[Authorization Server]
+    C -->|Authorization Code| A
+    A -->|Send Authorization Code| D[Application Server]
+    D -->|Request Access Token| B
+    B -->|Access Token| D
+    D -->|Fetch User Data| E[User Info Endpoint]
+
+    subgraph OAuth Flow
+        B
+        C
+    end
+
+    subgraph Application
+        D
+        E
+    end
+
+    style OAuth Flow fill:#f9f,stroke:#333,stroke-width:2px
+    style Application fill:#ccf,stroke:#333,stroke-width:2px
+```
+
 ## 1. Initialize a Node.js project
 
 ```bash
